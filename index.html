@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mystery Box</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #141E30, #243B55);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3rem;
+      animation: fadeInDown 1s ease-out;
+    }
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      opacity: 0;
+      animation: fadeIn 2s ease-in forwards;
+      animation-delay: 1s;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #ff4081;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s, transform 0.2s;
+      animation: fadeInUp 1s ease-out 1.5s forwards;
+      opacity: 0;
+    }
+    button:hover {
+      background-color: #e73370;
+      transform: scale(1.05);
+    }
+    #fact {
+      margin-top: 30px;
+      font-style: italic;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    @keyframes fadeInDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Mystery Box</h1>
+  <p>Click the button below to reveal a random fun fact. You never know what you'll get!</p>
+  <button onclick="showFact()">Open Box</button>
+  <p id="fact"></p>
+
+  <script>
+    const facts = [
+      "Honey never spoils. Archaeologists have found edible honey in ancient Egyptian tombs.",
+      "Bananas are berries, but strawberries are not.",
+      "Octopuses have three hearts and blue blood.",
+      "A bolt of lightning contains enough energy to toast 100,000 slices of bread.",
+      "There are more stars in the universe than grains of sand on Earth."
+    ];
+
+    function showFact() {
+      const randomIndex = Math.floor(Math.random() * facts.length);
+      const factElement = document.getElementById('fact');
+      factElement.style.opacity = 0;
+      setTimeout(() => {
+        factElement.textContent = facts[randomIndex];
+        factElement.style.opacity = 1;
+      }, 200);
+    }
+  </script>
+</body>
+</html>
